@@ -138,8 +138,8 @@ def create_features(financial_statement):
     淨值週轉率次數 = 營業收入淨額 / 權益總計.rolling(2, min_periods=1).mean()
 
     自由現金流量 = 經常稅後淨利.fillna(0) \
-               + 折舊.fillna(0) - 攤提.fillna(0) - 取得不動產廠房及設備.fillna(0)\
-               - ((流動資產.fillna(0) - 流動負債.fillna(0)) - (流動資產.fillna(0).shift() - 流動負債.fillna(0).shift()))
+               + 折舊.fillna(0) - 攤提.fillna(0) + 取得不動產廠房及設備.fillna(0)\
+               - (流動資產.fillna(0).shift() - 流動負債.fillna(0).shift())
 
 
     自由現金流量[自由現金流量 == 0] = np.nan
